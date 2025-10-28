@@ -1,0 +1,35 @@
+flowchart LR
+    subgraph actors["actors"]
+        A["Users"]
+        B["Legislature API"]
+    end
+    subgraph useCases["Use Case #1"]
+        U1("Download Bill Information")
+        U2("Process Bill Information")
+        U3{"`Notification Data`"}
+        U4("Store Process Bill Information")
+        U5("Check if Page for Bill Exists")
+        U6("Create Page for Bill")
+        U7["Update Page for Bill"]
+        U8("Filter Notifications")
+        U9["Retrive User Prefrences"]
+        U10("Send Notifications")
+       
+    end
+    B -->U1
+    U1 --> |<<include>>| U2
+    U2 --> |<<include>>| U3
+    U3 --> |<<include>>| U4
+    U3 --> |<<include>>| U5
+    U5 --> |<<include>>| U6
+    U6 -->|<<include>>| U7
+    U3 --> |<<include>>| U7
+    U3 --> U8
+    U9 --> U8
+    U8 --> U10
+    U10 --> A
+
+    style actors stroke:#000000,fill:#FFF9C4
+    style useCases stroke:#000000,fill:#BBDEFB
+
+
