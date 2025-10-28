@@ -1,0 +1,94 @@
+flowchart LR
+ subgraph actors["actors"]
+        L["Legislature API"]
+        A["User 1"]
+        B[User 2]
+        C[Local Boards of Elections]
+  end
+ subgraph useCases["System"]
+        U1("Download Bill Information")
+        U2("Process Bill Information")
+        U4[Bill Information]
+        U5("Check if Page for Bill Exists")
+        U6("Create Page for Bill")
+        U8("Filter Notifications")
+        U9("Send Notifications")
+        U10{"Notifications Data"}
+        U11[Bill Page]
+        U12(Login to Account)
+        U13(Check Boxes for Topics)
+        U14[User Prefrences]
+        U15(Select Default Importance Threshold)
+        U16(Select Importance Threshold per topic)
+        U17(Share Notification)
+        U18(Scheduler)
+        U19(Download Election Dates)
+        U20((If Time for Notification))
+        U21(Send Election Notification)
+        U22(Process Vote Information Per Representative)
+        U23[Store Vote Information Per Representative]
+        U24(Select Bill Actions to Be Notified About)
+        U25(Check if Page for Representative Exists)
+        U26(Create Page For Representative)
+        U27[Page for Representative]
+        U28(Process Record Changes)
+
+  end
+    U18 -- &lt;&gt; --> U1
+    U1 --> L
+    U1 -- &lt;&gt; --> U2
+    U10 -- &lt;&gt; --> U4 & U5
+    U2 -- &lt;&gt; --> U10
+    U5 -- &lt;&gt; --> U6
+    U14 --> U8
+    U10 --> U8
+    U8 --> U9
+    U9 --> A
+    U6 -- &lt;&gt; --> U11
+    U10 -- &lt;&gt; --> U11
+    U4 -- &lt;&gt; --> U2
+
+    A --> U12
+    U12 -- &lt;&gt; --> U13
+    U13 -- &lt;&gt; --> U14
+
+    U12 -- &lt;&gt; --> U15
+    U15 -- &lt;&gt; --> U14
+
+    U14 -- &lt;&gt; --> U16
+    U12 -- &lt;&gt; --> U16
+    U16 -- &lt;&gt; --> U14
+
+    A -- Click Link --> U11
+    U11 -- &lt;&gt; --> U17
+    U17 --> B
+
+    U18 -- &lt;&gt; --> C
+
+    U18 -- &lt;&gt; --> U19
+    U19 -- &lt;&gt; --> U20
+    U20 -- &lt;&gt; --> U21
+    U21 --> A
+
+    U10 -- &lt;&gt; --> U22
+    U22 -- &lt;&gt; --> U23
+    U23 -- &lt;&gt; --> U8
+
+    U12 -- &lt;&gt; --> U24
+    U24 -- &lt;&gt; --> U14
+
+    U23 -- &lt;&gt; --> U25
+    U25 -- &lt;&gt; --> U26
+    U26 -- &lt;&gt; --> U28
+    U23 -- &lt;&gt; --> U28
+    U28 -- &lt;&gt; --> U27
+
+    A -- &lt;&gt; --> U27
+
+
+
+    style actors stroke:#000000,fill:#FFF9C4
+    style useCases stroke:#000000,fill:#BBDEFB
+
+
+
