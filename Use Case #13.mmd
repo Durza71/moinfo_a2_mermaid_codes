@@ -1,0 +1,23 @@
+flowchart LR
+    subgraph actors["actors"]
+        A["User"]
+    end
+    subgraph useCases["Use Case #13"]
+        U1("Login to Account")
+        U2("Toggle for Only Passed Bills")
+        U3["Store User Preferences"]
+        U4("Filter Notifications")
+    end
+    A -->U1
+    U1 --> |<<include>>| U2
+    U2 --> |<<include>>| U3
+    U3 --> |<<include>>| U4
+
+
+
+
+    style actors stroke:#000000,fill:#FFF9C4
+    style useCases stroke:#000000,fill:#BBDEFB
+
+
+
