@@ -1,0 +1,21 @@
+flowchart LR
+ subgraph actors["actors"]
+        B["User"]
+  end
+ subgraph useCases["Use Case #3"]
+        U1(Login To Account)
+        U2(Slider to Select Default Importance)
+        U3(Overwrite Already set Topic Importance)
+        U4[Store User Prefrences]
+        U5(Filter Notifications)
+  end
+      B --> U1
+      U1 -- &lt;&gt; -->  U2
+      U2 -- &lt;&gt; --> U3
+      U3 -- &lt;&gt; --> U4
+      U2 -- &lt;&gt; --> U4
+      U4 -- &lt;&gt; --> U5
+    
+
+    style actors stroke:#000000,fill:#FFF9C4
+    style useCases stroke:#000000,fill:#BBDEFB

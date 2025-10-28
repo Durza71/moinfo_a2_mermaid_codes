@@ -1,0 +1,29 @@
+---
+config:
+  layout: fixed
+---
+flowchart LR
+ subgraph actors["actors"]
+        A["Local Board of Elections"]
+        B["User"]
+  end
+ subgraph useCases["Use Case #9"]
+        U0("Scheduled")
+        U1("Download Election Dates")
+        U2["Store Dates"]
+        U3("If Election 1 month away")
+        U4("If Election 2 weeks away")
+        U5("If Election 1 week away")
+        U6("If Election 1 day away")
+        U7("Send Notification")
+  end
+    U0 -- &lt;&gt; --> U1
+    U1 --> A
+    U1 -- &lt;&gt; --> U2 & U3 & U4 & U5 & U6
+    U3 -- &lt;&gt; --> U7
+    U4 -- &lt;&gt; --> U7
+    U5 -- &lt;&gt; --> U7
+    U6 -- &lt;&gt; --> U7
+    U7 --> B
+    style actors stroke:#000000,fill:#FFF9C4
+    style useCases stroke:#000000,fill:#BBDEFB

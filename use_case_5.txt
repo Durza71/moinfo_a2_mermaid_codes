@@ -1,0 +1,15 @@
+flowchart LR
+ subgraph actors["actors"]
+        B["User"]
+  end
+ subgraph useCases["Use Case #5"]
+        U1(Send Bill  Notification)
+        U2[Bill Page]
+
+  end
+      U1 --> B
+      B -- Click link --> U2
+    
+
+    style actors stroke:#000000,fill:#FFF9C4
+    style useCases stroke:#000000,fill:#BBDEFB
